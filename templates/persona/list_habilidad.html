@@ -1,0 +1,13 @@
+<h3>Lista de Habilidades</h3>
+
+<form method="GET">{% csrf_token %}
+    <input type="text" id='clave' name='clave' placeholder="id">
+    <button type="submit">Buscar</button>
+</form>
+
+<h3>Resultados:</h3>
+<ul>
+    
+    <li> {{ habilidades }} </li>
+    
+</ul>

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Empleados - Departamento
+{% endblock titulo %}
+
+{% block cuerpo %}
+{% include 'includes/header.html' %}
+<div class="grid-container">
+    <div class="grid-x">
+        <h3 class="cell"> Empleados Por Departamento</h3>
+        <div class="cell">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="50">ID</th>
+                        <th width="150">NOMBRE(S)</th>
+                        <th width="150">APELLIDO(S)</th>
+                        <th width="150">DEPARTAMENTO</th>
+                        <th width="50">ACCION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in empleados %}
+                    <tr>
+                        <td> {{ e.id }} </td>
+                        <td> {{ e.first_name }} </td>
+                        <td> {{ e.last_name }} </td>
+                        <td> {{ e.departamento.name }} </td>
+                        <td> <a class="clear button primary" href=" {% url 'persona_app:detail' e.id %} ">Ver</a> </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="grid-x grid-margin-x cell align-center">
+                <a class="cell large-2 hollow button success" href="{% url 'departamento_app:lista_d' %}">Regresar</a>
+                <a class="cell large-2 hollow button primary" href="{% url 'persona_app:empleados_todos' %}">Empleados</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock cuerpo %}

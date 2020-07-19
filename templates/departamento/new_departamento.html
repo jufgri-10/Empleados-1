@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Registrar Departamento
+{% endblock titulo %}
+
+
+{% block cuerpo %}
+{% include 'includes/header.html' %}
+<div class="grid-container">
+    <div class="grid-x">
+        <h3>Registrar Departamento</h3>
+        <div class="cell callout primary">
+            <form class="cell grid-x grid-margin-x" method="POST">{% csrf_token %}
+                <h5 class="cell">Datos del Gerente</h5>
+                <div class="cell large-6">
+                    <label>Nombre(s)
+                        {{ form.nombre }}
+                    </label>
+                </div>
+                <div class="cell large-6">
+                    <label>Apellido(s)
+                        {{ form.apellidos }}
+                    </label>
+                </div>    
+                <h5 class="cell">Datos del Departamento</h5>
+                <div class="cell large-6">
+                    <label>Nombre
+                        {{ form.departamento }}
+                    </label>
+                </div>
+                <div class="cell large-6">
+                    <label>Clave
+                        {{ form.shor_name }}
+                    </label>                        
+                </div>
+                <div class="grid-x grid-margin-x cell align-center">
+                    <div class="cell">
+                        <label> . </label>                        
+                    </div>  
+                    <button class="cell large-2 hollow button success" type="submit">Guardar</button>
+                    <a class="cell large-2 hollow button alert" href="{% url 'departamento_app:lista_d' %}">Cancelar</a>
+                    <a class="cell large-2 hollow button primary" href="{% url 'persona_app:empleados_todos' %}">Empleados</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock cuerpo %}

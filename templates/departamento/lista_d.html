@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Areas de la Empresa
+{% endblock titulo %}
+
+{% block cuerpo %}
+{% include 'includes/header.html' %}
+<div class="grid-container">
+    <div class="grid-x">
+        <h2 class="cell">Departamentos</h2>
+        <div class="cell">
+            <table>
+                <tbody>
+                    {% for departamento in departamentos %}
+                    <tr>
+                        <td> {{ departamento.shor_name }} </td>
+                        <td> {{ departamento.name }} </td>
+                        <td> <a class="clear button primary" href=" {% url 'persona_app:area' departamento.name %} ">Ver Empleados</a> </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="grid-x grid-margin-x cell align-center">
+                <a class="cell large-2 hollow button success" href="{% url 'departamento_app:new_departamento' %}">Agregar</a>
+                <a class="cell large-2 hollow button primary" href="{% url 'persona_app:empleados_todos' %}">Empleados</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock cuerpo %}

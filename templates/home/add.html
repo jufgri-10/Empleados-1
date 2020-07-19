@@ -1,0 +1,11 @@
+<center>
+<h2> Nuevo Registro </h2>
+<!-- Como se haria con html
+<input type='text' placeholder="Ingresar Titulo">
+-->
+<!--Como se hace en python-->
+<form method="POST">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Agregar</button>
+</form>
+</center>

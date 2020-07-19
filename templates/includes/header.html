@@ -1,0 +1,21 @@
+<div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text">Empleados</li>
+            <li><a href="{% url 'persona_app:inicio' %}">Inicio</a></li>
+            <li><a href="{% url 'persona_app:empleados_todos' %}">Lista</a></li>
+            <li><a href="{% url 'departamento_app:lista_d' %}">Departamento</a></li>
+            <li><a href="{% url 'persona_app:empleados_administrar' %}">Administrar</a></li>
+        </ul>
+    </div>
+    <div class="grid-container">
+        <div class="grid-x top-bar-right">
+            <ul class="grid-x grid-margin-x menu">
+                <li class="cell large-6"><a class="hollow button success" href="{% url 'persona_app:agregar' %}">E</a></li>
+                <li class="cell large-6"><a class="hollow button warning" href="{% url 'departamento_app:new_departamento' %}">D</a></li>
+                <!--<li class="cell large-5"><input type="search" placeholder="Buscar" style="margin-left: 10px;"></li>
+                <li class="cell large-1"><button type="button" class="button">Buscar</button></li>-->
+            </ul>
+        </div>
+    </div>
+</div>

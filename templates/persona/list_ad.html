@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Lista de Empleados
+{% endblock titulo %}
+
+{% block cuerpo %}
+{% include 'includes/header.html' %}
+<div class="grid-container">
+    <div class="grid-x">
+        <h3 class="cell">Empleados</h3>
+        <form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %}
+            <div class="cell large-7">
+                <input type="text" id="kword" name="kword" placeholder="Buscar Empleado">
+            </div>
+            <div class="cell large-2">
+                <button type="submit" class="hollow button success">Buscar</button>
+            </div>
+        </form>
+        <div class="cell">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="50">ID</th>
+                        <th width="150">NONMBRE(S)</th>
+                        <th width="150">APELLIDO(S)</th>
+                        <th width="150">DEPARTAMENTO</th>
+                        <th width="100">ACCION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in object_list %}
+                    <tr>
+                        <td> {{ e.id }} </td>
+                        <td> {{ e.first_name }} </td>
+                        <td> {{ e.last_name }} </td>
+                        <td> {{ e.departamento.name }} </td>
+                        <td>
+                            <a class="clear button primary" href=" {% url 'persona_app:modificar_empleado' e.id %} ">Editar</a>
+                            <a class="clear button alert" href=" {% url 'persona_app:eliminar_empleado' e.id %} ">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div> 
+
+    <div class="pagination, grid-x align-center">
+        <span class="step-links">
+            {% if page_obj.has_previous %}          
+                <a href="?page={{ page_obj.previous_page_number }}">anterior</a>
+            {% endif %}
+
+            <span class="current">
+            {{ page_obj.number }}
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">siguiente</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock cuerpo %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Eliminar - {{object.first_name}} {{object.last_name}}
+{% endblock titulo %}
+{% block cuerpo %}
+{% include 'includes/header.html' %}
+<div class="grid-container">
+    <div class="grid-x">
+        <h3>Eliminar Empleado</h3>
+        <div class="callout alert cell">
+            <form method='POST'>{% csrf_token %}
+                <h4 class="cell"><center>
+                    Confirme que desea eliminar:<br>
+                    {{ object.first_name }} {{ object.last_name}}<br>
+                    {{ object.departamento.name }}<br>
+                </h4></center>
+                <div class="cell grid-x grid-margin-x align-center">
+                    <button type='submit' class="cell large-2 hollow button alert">Confirmar</button>
+                    <a class="cell large-2 hollow button primary" href="{% url 'persona_app:detail' object.id %}">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock cuerpo %}

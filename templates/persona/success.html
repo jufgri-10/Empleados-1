@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Lista de Empleados
+{% endblock titulo %}
+
+{% block cuerpo %}
+{% include 'includes/header.html' %}
+<div class="grid-container">
+    <div class="grid-x">
+        <div class="callout success cell">
+            <h2 class="cell"><center>
+                Felicidades</br>
+                Empleado</br>
+                Guardado</br>
+                Correctamente
+            </h2></center>
+        </div>
+        <div class="cell grid-x grid-margin-x align-center">                 
+            <a class="cell large-2 hollow button primary" href="{% url 'persona_app:inicio' %}">Inicio</a>                   
+            <a class="cell large-2 hollow button success" href="{% url 'persona_app:agregar' %}">Agregar</a>                   
+            <a class="cell large-2 hollow button primary" href="{% url 'persona_app:empleados_todos' %}">Empleados</a>                    
+        </div>
+    </div>
+</div>
+{% endblock cuerpo %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Editar Empleado
+{% endblock titulo %}
+
+{% block cuerpo %}
+{% include 'includes/header.html' %}
+<div class="grid-container">
+    <div class="grid-x">
+        <h3 class="cell">Modificar Empleado</h3>
+        <div class="cell callout primary">
+            <form class="cell grid-x grid-margin-x" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="large-6 cell">
+                    <label>Nombre(s)
+                        {{ form.first_name }}
+                    </label>
+                </div>
+                <div class="large-6 cell">
+                    <label>Apellido(s)
+                        {{ form.last_name }}
+                    </label>
+                </div>
+                <div class="large-6 cell">
+                    <label>Telefono
+                        {{ form.phone }}
+                    </label>
+                </div>
+                <div class="large-6 cell">
+                    <label>Direccion
+                        {{ form.adress }}
+                    </label>
+                </div>
+                <div class="large-4 cell">
+                    <label>Departamento
+                        {{ form.departamento }}
+                    </label>
+                </div>
+                <div class="large-4 cell">
+                    <label>Trabajo
+                        {{ form.job }}
+                    </label>
+                </div>
+                <div class="large-4 cell">
+                    <label>Habilidades
+                        {{ form.habilidades }}
+                    </label>
+                </div>
+                <div class="large-4 cell">
+                    <label>Foto
+                        {{ form.avatar }}
+                    </label>
+                </div>
+                <div class="cell">
+                    <label>CV</label>
+                </div>
+                <div class="large-8 cell align-center">
+                    <label>
+                        {{ form.hoja_vida }}
+                    </label>
+                </div>
+            <div class="grid-x grid-margin-x cell align-center">   
+                <button class="cell large-2 hollow button success" type="submit">Guardar</button>
+                <a class="cell large-2 hollow button alert" href="{% url 'persona_app:empleados_administrar' %}">Cancelar</a>
+                <a class="cell large-2 hollow button primary" href="{% url 'persona_app:empleados_todos' %}">Empleados</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock cuerpo %}
